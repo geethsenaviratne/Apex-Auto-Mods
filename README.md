@@ -78,8 +78,35 @@ Apex-Auto-Mods/
 
 ## Deployment
 
-- The frontend can be built with `npm run build` and served with a static server or via Nginx (see `nginx.conf`).
-- The backend can be deployed on any Node.js-compatible server.
+### Deployment Steps
+
+#### Backend
+1. Ensure all environment variables and database configuration are set in `config/db.js` and your environment.
+2. Install dependencies:
+    ```sh
+    npm install
+    ```
+3. Start the backend server:
+    ```sh
+    npm start
+    ```
+4. The backend is deployed at Render:
+    **Production URL:** https://apex-auto-mods.onrender.com
+
+#### Frontend
+1. Install dependencies:
+    ```sh
+    npm install
+    ```
+2. Build the frontend:
+    ```sh
+    npm run build
+    ```
+3. Deploy the contents of the `dist` folder to your static hosting provider (e.g., Vercel).
+4. The frontend is deployed at Vercel:
+    **Production URL:** https://apex-auto-mods-nine.vercel.app/
+
+---
 
 ## Contributing
 
