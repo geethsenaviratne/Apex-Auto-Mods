@@ -19,7 +19,7 @@ const UserDashboard = ({ user}) => {
     }
     const userId = user.id || user._id || user.userId;
     axios.get(
-      `http://localhost:5000/api/builds/${userId}`,
+     `${import.meta.env.VITE_BACKEND_URL}/api/builds/${userId}`,
       { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
     )
       .then(res => {
