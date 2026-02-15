@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Header from '../components/header';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import SeeDetails from '../components/seeDetails';
 
 const UserDashboard = ({ user}) => {
   const [builds, setBuilds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedBuild, setSelectedBuild] = useState(null);
 
   useEffect(() => {
     if (!user) return;
@@ -19,7 +20,7 @@ const UserDashboard = ({ user}) => {
     }
     const userId = user.id || user._id || user.userId;
     axios.get(
-     `${import.meta.env.VITE_BACKEND_URL}/api/builds/${userId}`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/builds/${userId}`,
       { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
     )
       .then(res => {
@@ -72,7 +73,7 @@ const UserDashboard = ({ user}) => {
               builds.slice(0, 2).map((build, idx) => (
                 <div key={build._id || idx} className="bg-white rounded-2xl shadow p-4 sm:p-6 flex-1 min-w-0 max-w-full flex flex-col gap-4 border border-[#f0f0f0]">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="inline-block w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center font-bold text-[#e63946] text-lg">
+                    <span className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center font-bold text-[#e63946] text-lg shrink-0">
                       {build.carModel?.[0] || 'C'}
                     </span>
                     <span className="font-bold text-lg text-[#181a20]">{build.carModel}</span>
@@ -117,7 +118,12 @@ const UserDashboard = ({ user}) => {
                     </td>
                     <td className="py-2 pr-2 sm:pr-4 text-xs text-gray-400">{new Date(build.createdAt).toLocaleDateString()}</td>
                     <td className="py-2 pr-2 sm:pr-4">
-                      <button className="px-4 py-1 bg-[#e63946] text-white rounded-lg font-semibold shadow hover:bg-[#c82333] transition text-xs">See details</button>
+                      <button 
+                        onClick={() => setSelectedBuild(build)}
+                        className="px-4 py-1 bg-[#e63946] text-white rounded-lg font-semibold shadow hover:bg-[#c82333] transition text-xs"
+                      >
+                        See details
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -127,6 +133,12 @@ const UserDashboard = ({ user}) => {
         </div>
       </main>
       <Footer />
+      {selectedBuild && (
+        <SeeDetails 
+          build={selectedBuild} 
+          onClose={() => setSelectedBuild(null)} 
+        />
+      )}
     </div>
     
   );
