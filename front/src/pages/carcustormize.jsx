@@ -10,7 +10,25 @@ const CAR_MODELS = [
   "Honda Cr-V 2021",
   "Audi A6 2021",
   "Audi Q3 2019",
-  "Mercedes-Benz C-Class 2019"
+  "Mercedes-Benz C-Class 2019",
+  "BMW M4",
+  "BMW X5",
+  "BMW i8",
+  "Porsche 911",
+  "Porsche Cayenne",
+  "Ford Mustang",
+  "Toyota Starlet",
+  "Toyota Supra",
+  "Toyota Hilux",
+  "Toyota Land Cruiser",
+  "Nissan Petrol Y61",
+  "Nissan Petrol Y62",
+  "Nissan Navara",
+  "Mitsubishi Lancer Evolution",
+  "Mitsubishi Pajero",
+  "Mitsubishi L200",
+  "Mitubishi Outlander",
+  "Mitsubishi Montero"
 ];
 const COLORS = ["Red", "Black", "White", "Blue", "Silver", "Orange", "Green"];
 const PARTS = [
@@ -21,7 +39,15 @@ const PARTS = [
   "Leather Seats",
   "Ambient Lighting",
   "LED Headlights",
-  "Vehicle Wraps"
+  "Vehicle Wraps",
+  "Lift Kit",
+  "All-Terrain Tires",
+  "Winch",
+  "Roof Rack",
+  "Snorkel",
+  "Skid Plates",
+  "Bull Bar",
+  "Off-road Lights"
 ];
 
 const CarCustomize = ({ user }) => {
