@@ -1,4 +1,4 @@
-# Apex Auto Mods web App
+# Apex Auto Mods Web App
 
 A full-stack web application for car customization and service management.
 
